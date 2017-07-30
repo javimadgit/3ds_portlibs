@@ -291,6 +291,7 @@ $(TINYXML): $(TINYXML_SRC)
 $(TREMOR): $(TREMOR_SRC)
 	@[ -d $(TREMOR_VERSION) ] || tar -xzf $<
 	@cd $(TREMOR_VERSION) && \
+	 patch -Np1 -i ../libtremor-2a1a8f6.patch && \
 	 ./autogen.sh --prefix=$(PORTLIBS_PATH)/armv6k --host=arm-none-eabi --disable-shared --disable-oggtest
 	@$(MAKE) -C $(TREMOR_VERSION)
 
